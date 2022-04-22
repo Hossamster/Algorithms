@@ -29,17 +29,19 @@ for i,j in graph.items():
             if nodes[i]['cost'] > graph[i].get(k) + nodes[k]['cost']:
                 nodes[i]['cost'] = graph[i].get(k) + nodes[k]['cost']
                 nodes[i]['pre'] =  k
-print(nodes)
 
-"""{'A': {'cost': 0, 'pre': None}, 
-'B': {'cost': 2, 'pre': 'A'}, 
-'C': {'cost': 4, 'pre': 'A'}, 
-'D': {'cost': 6, 'pre': 'C'}, 
-'E': {'cost': 9, 'pre': 'C'}, 
-'F': {'cost': 10, 'pre': 'E'}}"""
+sh =0 
 
+# This loop is used to get the shortest path
 for i in nodes.keys():
     if nodes[i]['pre'] not in paths and i!= src:
         paths.append(nodes[i]['pre'])
 paths.append(dest)
-print(paths)
+
+# This loop is used to get the shortest distance
+for i in range(0,len(paths)):
+    if i != len(paths) - 1:
+        sh += (graph[paths[i]].get(paths[i+1]))
+
+print(nodes)
+print(f"The shortest path is {paths} \nThe shortest distance is {sh}")
