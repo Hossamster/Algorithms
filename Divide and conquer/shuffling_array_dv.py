@@ -1,26 +1,20 @@
-# Assume [2,5,1,3,4,7] , n=lst/2 = 6/2 = 3
-# [2,3,5,4,1,7]
 def shuffle(lst):
-    n = (len(lst) / 2)
-    print(n)
-    if n % 2 == 0:
-        left_lst = []
-        for i in range(0, n):
-            left_lst.append(lst[i])
+    #print(lst)
+    k = int(len(lst))
+    # print(k)
+    if k <= 1: 			# if the length of the list is less than or equal to one
+        return lst		# return the list
+    else:
+        left_lst = []	 #[1]
+        right_lst = []   #[2]
+        for i in range(0,len(lst)): # (0,9)
+            if i % 2 == 0:
+                left_lst.append(lst[i]) # append lst[i] in left_lst if the index is even 
+            else:
+                right_lst.append(lst[i])# append lst[i] in right_lst if the index is odd
+        
+        return shuffle(right_lst) + shuffle(left_lst)
 
-        right_lst = []
-        for i in range(n, len(lst)):
-            right_lst.append(lst[i])
+print(shuffle([1,3,7,4,8]))
 
-        print(left_lst, right_lst)
-
-        final_lst = []
-        for i in range(0, len(left_lst)):
-            final_lst.extend([left_lst[i], right_lst[i]])
-
-        return final_lst
-
-    return f"Please enter an array that divisible by 2"
-
-
-print(shuffle([2, 5, 1, 3, 4, 7]))
+# print(shuffle([2,5,1,3,4,7,6]))

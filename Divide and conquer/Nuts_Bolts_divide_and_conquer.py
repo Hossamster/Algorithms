@@ -1,49 +1,42 @@
+# from random import sample,choice
+# def random_list():
+#     """generates a random list"""
+#     lst = [choice(['%','$','#',"@","&"]) for i in range(0,5)]
+#     return (sample(lst, len(lst)))
+# print(random_list())
+
+
 # Nuts and Bolts in a quick sort way
-
-from random import sample
-
-
-def random_list():
-    """generates a random list"""
-    lst = [num for num in range(9, 101, 10)]
-    return (sample(lst, len(lst)))
-
-
-print(random_list())
-
-
 def quicksort(lst):
-    """Sorting list from smallest to largest"""
+    """Sorting the list by quicksort technique """
 
     if len(lst) <= 1:
         return lst
     else:
         # pop the last element
-        pivot = lst.pop()               # o(1)
+        pivot = lst.pop()               
         lst_left = []
-        lst_right = []  # o(2)
-        for i in lst:                   # o(lst)
-            if i > pivot:               # o(lst)
+        lst_right = []  
+        for i in lst:                   
+            if i > pivot:               
                 lst_right.append(i)
-            elif i <= pivot:            # o(lst)
+            elif i <= pivot:            
                 lst_left.append(i)
-        return quicksort(lst_left) + [pivot] + quicksort(lst_right)  # o(1) !
-
-    # big O for quicksort() is O(3+3*lst) app. = O(lst)
-
+        return quicksort(lst_left) + [pivot] + quicksort(lst_right)  
 
 def nuts_bolts(nuts_lst, bolts_lst):
-    nuts = quicksort(nuts_lst)
-    bolts = quicksort(bolts_lst)
-    for i in nuts:          # o(n)
-        for j in bolts:     # o(n)
-            if i == j:      # o(1)
+    """Mapping each nut to its bolt"""
+    nuts = quicksort(nuts_lst)          # sorting the nuts by quicksort technique
+    bolts = quicksort(bolts_lst)        # sorting the bolts by quicksort technique
+    # mapping each nut to its bolt
+    for i in nuts:          
+        for j in bolts:     
+            if i == j:      
                 print(f"{i} nut is mapping to {j} bolt")
 
-    # big O for nuts_bolts() is O(n^2+1) app. = O(n^2)
+nuts_bolts([1,2,3,4,5], [3,2,4,1,5])
 
-
-nuts_bolts(random_list(), random_list())
+# nuts_bolts(random_list(), random_list())
 
 """In case you don't know what the function does !"""
 """Just type this >> print(function_name.__doc__)"""

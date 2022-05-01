@@ -15,7 +15,7 @@ def task_scheduling(tasks):
     
     cnt = 0     # for how much tasks can be done 
     lst = []    # to append in it which tasks 
-    s = -1      
+    s = -1      # end
     for i in st_fn_lst:
         if s <= i[0]:
             s = i[1]
