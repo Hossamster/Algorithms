@@ -17,3 +17,6 @@ dicts = {"name":"aya"}
 print(dicts.get("nameeeeee"))
 
 
+#! nothing to say >>>
+
+
